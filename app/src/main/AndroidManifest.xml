@@ -20,6 +20,9 @@
         <activity android:name="com.example.xbp.customviews.activity.TestActivity"
                   android:screenOrientation="portrait"
                   />
+        <activity android:name="com.example.xbp.customviews.activity.DeleteListViewActivity"
+                  android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

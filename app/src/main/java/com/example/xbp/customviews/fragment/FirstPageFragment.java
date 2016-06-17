@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.xbp.customviews.R;
+import com.example.xbp.customviews.activity.DeleteListViewActivity;
 import com.example.xbp.customviews.activity.TestActivity;
 import com.example.xbp.customviews.adapter.FirstRecycelAdapter;
 import com.example.xbp.customviews.bean.ItemBean;
@@ -56,6 +57,7 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
     private void initView() {
         firstItemBeans=new ArrayList<>();
         firstItemBeans.add(new ItemBean("计数器","一个简单的计数器"));
+        firstItemBeans.add(new ItemBean("DeleteListView","一个可以删除的listView"));
         firstRecycelAdapter=new FirstRecycelAdapter(firstItemBeans);
         linearLayoutManager=new LinearLayoutManager(getActivity());
         firstRecycelAdapter.setItemClickListener(this);
@@ -79,7 +81,17 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
 
     @Override
     public void OnItemClick(View view, int positon) {
-        Intent intent=new Intent(getActivity().getApplicationContext(), TestActivity.class);
-        startActivity(intent);
+        Intent intent;
+        switch (positon){
+            case 0:
+                intent=new Intent(getActivity().getApplicationContext(), TestActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent=new Intent(getActivity().getApplicationContext(), DeleteListViewActivity.class);
+                startActivity(intent);
+                break;
+            default:break;
+        }
     }
 }
