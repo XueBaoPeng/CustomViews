@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.xbp.customviews.R;
 import com.example.xbp.customviews.activity.DeleteListViewActivity;
+import com.example.xbp.customviews.activity.EventActivity;
 import com.example.xbp.customviews.activity.TestActivity;
 import com.example.xbp.customviews.adapter.FirstRecycelAdapter;
 import com.example.xbp.customviews.bean.ItemBean;
@@ -58,6 +59,7 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
         firstItemBeans=new ArrayList<>();
         firstItemBeans.add(new ItemBean("计数器","一个简单的计数器"));
         firstItemBeans.add(new ItemBean("DeleteListView","一个可以删除的listView"));
+        firstItemBeans.add(new ItemBean("EventBusDemo","事件总线的使用"));
         firstRecycelAdapter=new FirstRecycelAdapter(firstItemBeans);
         linearLayoutManager=new LinearLayoutManager(getActivity());
         firstRecycelAdapter.setItemClickListener(this);
@@ -89,6 +91,10 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
                 break;
             case 1:
                 intent=new Intent(getActivity().getApplicationContext(), DeleteListViewActivity.class);
+                startActivity(intent);
+                break;
+            case 2:
+                intent=new Intent(getActivity().getApplicationContext(), EventActivity.class);
                 startActivity(intent);
                 break;
             default:break;

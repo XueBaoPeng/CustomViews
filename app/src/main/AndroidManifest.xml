@@ -23,6 +23,12 @@
         <activity android:name="com.example.xbp.customviews.activity.DeleteListViewActivity"
                   android:screenOrientation="portrait"
             />
+        <activity android:name="com.example.xbp.customviews.activity.EventActivity"
+                  android:screenOrientation="portrait"
+            />
+        <activity android:name="com.example.xbp.customviews.activity.EventSendActivity"
+                  android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>
