@@ -1,57 +1,93 @@
 package com.example.xbp.customviews.activity;
 
-import android.app.usage.UsageEvents;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.example.xbp.customviews.R;
-import com.example.xbp.customviews.bean.FirstEvent;
 
-import org.greenrobot.eventbus.EventBus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by xbp on 2016/6/23.
  */
 public class EventActivity extends BaseActivity {
 
-    @Bind(R.id.btn_try)
+    @Bind(R.id.button)
     Button button;
-    @Bind(R.id.tv)
-    TextView textView;
+    @Bind(R.id.imageView)
+    ImageView mImageView;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_bus);
         ButterKnife.bind(this);
-        EventBus.getDefault().register(this);
-        button.setOnClickListener(new View.OnClickListener() {
+        initButton();
+        initImageView();
+    }
+
+    private void initImageView() {
+        mImageView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        System.out.println("ImageView ACTION_DOWN");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        System.out.println("ImageView ACTION_MOVE");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        System.out.println("ImageView ACTION_UP");
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
+    //因为ImageView默认是不可点击的,所以如果屏蔽掉以下的代码,则只有
+        //ImageView的ACTION_DOWN没有ACTION_MOVE和ACTION_UP
+        mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),EventSendActivity.class);
-                startActivity(intent);
+                System.out.println("ImageView Clicked");
             }
         });
     }
 
-    public void onEventMainThread(FirstEvent event){
-        String msg="onEventMainThread"+event.getmMsg();
-        textView.setText(msg);
-        Toast.makeText(this,msg,Toast.LENGTH_LONG);
+    private void initButton() {
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Button clicked");
+            }
+        });
+        button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        System.out.println("Button Action_Down");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        System.out.println("Button Action_Move");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        System.out.println("Button Action_UP");
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
 }

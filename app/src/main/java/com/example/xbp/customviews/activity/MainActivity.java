@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.example.xbp.customviews.R;
 import com.example.xbp.customviews.fragment.FirstPageFragment;
+import com.example.xbp.customviews.fragment.TabFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
@@ -39,7 +40,7 @@ public class MainActivity extends BaseActivity {
         colors=new SparseArray<>();
 
         fragments.put(R.id.bottomBarItem1, new FirstPageFragment());
-        fragments.put(R.id.bottomBarItem2, new FirstPageFragment());
+        fragments.put(R.id.bottomBarItem2, new TabFragment());
         fragments.put(R.id.bottomBarItem3,new FirstPageFragment());
         fragments.put(R.id.bottomBarItem4,new FirstPageFragment());
         colors.put(R.id.bottomBarItem1, ContextCompat.getColor(this, R.color.tab_color_1));

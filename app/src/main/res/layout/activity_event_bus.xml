@@ -40,17 +40,22 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
+                  android:gravity="center"
                   android:orientation="vertical">
-    <Button
-        android:id="@+id/btn_try"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="btn_bty"/>
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dip"
+            android:text="Button" />
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dip"
+            android:src="@mipmap/ic_launcher" />
+
+    </LinearLayout>
 
 </LinearLayout>

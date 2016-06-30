@@ -41,13 +41,14 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
     private LinearLayoutManager linearLayoutManager;
     private FirstRecycelAdapter firstRecycelAdapter;
     private ArrayList<ItemBean> firstItemBeans;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if(rootView==null){
-        rootView=inflater.inflate(R.layout.fragment_first_page,container,false);
-            ButterKnife.bind(this,rootView);
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_first_page, container, false);
+            ButterKnife.bind(this, rootView);
 
         }
         ButterKnife.bind(this, rootView);
@@ -56,12 +57,12 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
     }
 
     private void initView() {
-        firstItemBeans=new ArrayList<>();
-        firstItemBeans.add(new ItemBean("计数器","一个简单的计数器"));
-        firstItemBeans.add(new ItemBean("DeleteListView","一个可以删除的listView"));
-        firstItemBeans.add(new ItemBean("EventBusDemo","事件总线的使用"));
-        firstRecycelAdapter=new FirstRecycelAdapter(firstItemBeans);
-        linearLayoutManager=new LinearLayoutManager(getActivity());
+        firstItemBeans = new ArrayList<>();
+        firstItemBeans.add(new ItemBean("计数器", "一个简单的计数器"));
+        firstItemBeans.add(new ItemBean("DeleteListView", "一个可以删除的listView"));
+        firstItemBeans.add(new ItemBean("EventBusDemo", "事件总线的使用"));
+        firstRecycelAdapter = new FirstRecycelAdapter(firstItemBeans);
+        linearLayoutManager = new LinearLayoutManager(getActivity());
         firstRecycelAdapter.setItemClickListener(this);
         firstPageRecycleView.setLayoutManager(linearLayoutManager);
         firstPageRecycleView.setAdapter(firstRecycelAdapter);
@@ -72,7 +73,9 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
                 firstPageRecycleView.smoothScrollToPosition(0);
             }
         });
+
     }
+
 
     @Override
     public void onDestroyView() {
@@ -84,20 +87,21 @@ public class FirstPageFragment extends Fragment implements FirstRecycelAdapter.I
     @Override
     public void OnItemClick(View view, int positon) {
         Intent intent;
-        switch (positon){
+        switch (positon) {
             case 0:
-                intent=new Intent(getActivity().getApplicationContext(), TestActivity.class);
+                intent = new Intent(getActivity().getApplicationContext(), TestActivity.class);
                 startActivity(intent);
                 break;
             case 1:
-                intent=new Intent(getActivity().getApplicationContext(), DeleteListViewActivity.class);
+                intent = new Intent(getActivity().getApplicationContext(), DeleteListViewActivity.class);
                 startActivity(intent);
                 break;
             case 2:
-                intent=new Intent(getActivity().getApplicationContext(), EventActivity.class);
+                intent = new Intent(getActivity().getApplicationContext(), EventActivity.class);
                 startActivity(intent);
                 break;
-            default:break;
+            default:
+                break;
         }
     }
 }
